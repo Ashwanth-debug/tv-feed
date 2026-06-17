@@ -30,7 +30,7 @@ export const WARM_CARD_SIGNAL_DATA_CRISP: Record<string, WarmCardSignalEntry> = 
     signal1Hls:   ['first triathlon'],
     signal2:      "The Garmin 265 and Lazer helmet are on your list.",
     signal2Hls:   ['Garmin 265', 'Lazer helmet'],
-    reasoning:    "Hebbal group rolls for the Nandi loop at 4:30am Sunday for 60km, ascent at sunrise, back by 9. I'll map your route and add you to their WhatsApp.",
+    reasoning:    "Hebbal group rolls for the Nandi loop at 4:30am Sunday for 60km, ascent\nat sunrise, back by 9. I'll map your route and add you to their WhatsApp.",
     reasoningHls: ['Nandi loop at 4:30am Sunday', 'ascent at sunrise'],
   },
 
