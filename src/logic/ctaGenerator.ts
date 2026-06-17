@@ -122,6 +122,19 @@ const ITEM_CTA_OVERRIDES: Record<string, string> = {
   'ws-wind-down':    'Cue the wind-down for tonight?',
   'ws-vinyl-ritual': 'Hold a Saturday seat?',
   'ws-gehra-hua':    "Queue this week's playlist?",
+
+  // Warm Profile 2 — Ananya agentic CTAs
+  'wp2-balcony':        'Pull up a starter set?',
+  'wp2-gond-art':       'Book a Saturday seat?',
+  'wp2-gold-stack':     'Shortlist a few pieces for you?',
+  'wp2-football':       'Add me to the pickup?',
+  'wp2-bonda':          'Send the recipe to your phone?',
+  'wp2-shivanasamudra': 'Lock the day-trip?',
+  'wp2-vidhana':        'Wake me at 5:15?',
+  'wp2-sunnys':         'Want me to hold a table for tomorrow?',
+  'wp2-pour-over':      'Book the 9am Saturday?',
+  'wp2-therpup':        'Hold a morning slot for you?',
+  'wp2-vinyasa':        'Roll it tomorrow morning?',
 };
 
 /**

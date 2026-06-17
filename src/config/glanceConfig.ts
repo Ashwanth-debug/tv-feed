@@ -85,6 +85,19 @@ const CONFIG_MAP: Record<string, GlanceConfig> = {
   'ws-wind-down':   { layout: 'center', cardCount: 0 },
   'ws-vinyl-ritual':{ layout: 'left',   cardCount: 0 },
   'ws-gehra-hua':   { layout: 'right',  cardCount: 0 },
+
+  // ── Warm Profile 2 feed items (Ananya) ────────────────────────────────────
+  'wp2-balcony':        { layout: 'left',   cardCount: 0 },
+  'wp2-gond-art':       { layout: 'center', cardCount: 0 },
+  'wp2-gold-stack':     { layout: 'right',  cardCount: 0 },
+  'wp2-football':       { layout: 'left',   cardCount: 0 },
+  'wp2-bonda':          { layout: 'center', cardCount: 0 },
+  'wp2-shivanasamudra': { layout: 'right',  cardCount: 0 },
+  'wp2-vidhana':        { layout: 'left',   cardCount: 0 },
+  'wp2-sunnys':         { layout: 'center', cardCount: 0 },
+  'wp2-pour-over':      { layout: 'left',   cardCount: 0 },
+  'wp2-therpup':        { layout: 'right',  cardCount: 0 },
+  'wp2-vinyasa':        { layout: 'center', cardCount: 0 },
 };
 
 const FALLBACK_LAYOUTS: GlanceLayout[] = ['left', 'right', 'center'];

@@ -38,6 +38,8 @@ import type { GlanceLayout } from '../config/glanceConfig';
 
 export interface L0Refs {
   bg:            HTMLElement | null;
+  /** Previous-card image underlay — only used when bgEntrance === 'fade' */
+  prevBg?:       HTMLElement | null;
   overlay:       HTMLElement | null;
   header:        HTMLElement | null;
   tagEl:         HTMLElement | null;
@@ -70,6 +72,13 @@ export interface L0TimelineOpts {
   onMascotGone:      () => void;
   /** Fires after beam activates — ColdStartApp starts 10s hold on this */
   onTimelineComplete: () => void;
+  /**
+   * Controls the bg entrance animation.
+   * 'zoom'         (default) — starts at scale 1.05, eases to 1.0 over 2.8s (original cold-start behaviour).
+   * 'zoom-dissolve'— starts at scale 0.96, zooms to 1.0 over 2.8s while fading in over 3.2s.
+   * 'plain'        — simple opacity fade, no scale.
+   */
+  bgEntrance?: 'zoom' | 'zoom-dissolve' | 'plain';
 }
 
 export function buildColdStartL0Timeline(refs: L0Refs, opts: L0TimelineOpts): gsap.core.Timeline {
@@ -121,12 +130,28 @@ export function buildColdStartL0Timeline(refs: L0Refs, opts: L0TimelineOpts): gs
 
   const cardEls = (showProducts ? refs.cards : []).filter(Boolean) as HTMLElement[];
 
-  /* ── 1. BG + parallax ──────────────────────────────────────────────── */
-  tl.to(bg, { opacity: 1, duration: 1.0, ease: 'power2.inOut' }, 0);
-  if (bg) tl.fromTo(bg,
-    { scale: 1.05, yPercent: -1.8 },
-    { scale: 1.00, yPercent: 0, duration: 2.8, ease: 'power1.out' },
-  0);
+  /* ── 1. BG ──────────────────────────────────────────────────────────── */
+  if (opts.bgEntrance === 'zoom-dissolve') {
+    // Outgoing: scales up gently and fades out — dissolves away.
+    // Incoming: fades in cleanly at normal scale.
+    const prevBg = refs.prevBg;
+    if (prevBg) {
+      gsap.set(prevBg, { scale: 1.0, opacity: 1 });
+      tl.to(prevBg, { scale: 1.04, opacity: 0, duration: 2.2, ease: 'power1.inOut' }, 0);
+    }
+    if (bg) gsap.set(bg, { scale: 1.04, opacity: 0 });
+    tl.to(bg, { opacity: 1, duration: 1.8, ease: 'power2.out' }, 0);
+  } else if (opts.bgEntrance === 'plain') {
+    if (bg) gsap.set(bg, { scale: 1.0, opacity: 0 });
+    tl.to(bg, { opacity: 1, duration: 3.2, ease: 'power1.inOut' }, 0);
+  } else {
+    // Cold-start mode (original behaviour): zoom in from 1.05 → 1.0.
+    tl.to(bg, { opacity: 1, duration: 1.0, ease: 'power2.inOut' }, 0);
+    if (bg) tl.fromTo(bg,
+      { scale: 1.05, yPercent: -1.8 },
+      { scale: 1.00, yPercent: 0, duration: 2.8, ease: 'power1.out' },
+    0);
+  }
 
   /* ── 2. Overlay ─────────────────────────────────────────────────────── */
   tl.to(overlay, { opacity: 1, duration: 0.85, ease: 'power2.out' }, 0.4);

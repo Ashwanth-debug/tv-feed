@@ -1,14 +1,14 @@
 /**
- * WarmProfile1CrispL0Glance — warm_profile_1_crisp route only.
+ * WarmProfile2CrispL0Glance — warm_profile_2_crisp route only.
  *
- * Identical to WarmProfile1L0Glance except uses WARM_CARD_SIGNAL_DATA_CRISP
- * for compressed reasoning text.
+ * Identical to WarmProfile1CrispL0Glance except uses WARM_PROFILE_2_SIGNAL_DATA_CRISP
+ * and falls back to ColdStartL0Glance for unmapped items.
  */
 import type { FeedItem, PreferenceProfile } from '../../data/types';
 import { getGlanceConfig } from '../../config/glanceConfig';
 import ColdStartL0Glance from './ColdStartL0Glance';
 import WarmProfile1CinematicL0 from './WarmProfile1CinematicL0';
-import { WARM_CARD_SIGNAL_DATA_CRISP } from './warmCardSignalDataCrisp';
+import { WARM_PROFILE_2_SIGNAL_DATA_CRISP } from './warmProfile2SignalDataCrisp';
 
 type Props = {
   item:               FeedItem;
@@ -18,8 +18,8 @@ type Props = {
   onTimelineComplete: () => void;
 };
 
-export default function WarmProfile1CrispL0Glance({ item, profile, paused = false, onCTAClick, onTimelineComplete }: Props) {
-  const signalData = WARM_CARD_SIGNAL_DATA_CRISP[item.id];
+export default function WarmProfile2CrispL0Glance({ item, profile, paused = false, onCTAClick, onTimelineComplete }: Props) {
+  const signalData = WARM_PROFILE_2_SIGNAL_DATA_CRISP[item.id];
 
   if (signalData) {
     const config     = getGlanceConfig(item);

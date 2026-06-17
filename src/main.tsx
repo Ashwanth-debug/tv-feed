@@ -20,6 +20,8 @@ import L0ExportApp from './L0ExportApp'
 import L0AnimationLabApp from './L0AnimationLabApp'
 import WarmProfile1App from './WarmProfile1App'
 import WarmProfile1CrispApp from './WarmProfile1CrispApp'
+import WarmProfile1CrisperApp from './WarmProfile1CrisperApp'
+import WarmProfile2CrispApp from './WarmProfile2CrispApp'
 
 declare global { interface Window { __L0_PREVIEW__?: string; __BEAM_POC__?: boolean; __INTERSTITIAL_PREVIEW__?: boolean; __L0_EXPORT__?: boolean } }
 
@@ -35,6 +37,10 @@ const isWarmProfile1  = window.location.pathname === '/warm_profile_1'
                      || window.location.pathname === '/warm-profile-1';
 const isWarmProfile1Crisp = window.location.pathname === '/warm_profile_1_crisp'
                      || window.location.pathname === '/warm-profile-1-crisp';
+const isWarmProfile1Crisper = window.location.pathname === '/warm_profile_1_crisper'
+                     || window.location.pathname === '/warm-profile-1-crisper';
+const isWarmProfile2Crisp = window.location.pathname === '/warm_profile_2_crisp'
+                     || window.location.pathname === '/warm-profile-2-crisp';
 const isT2Fashion     = window.location.pathname === '/t2-fashion'
                      || window.location.hash === '#t2-fashion'
                      || new URLSearchParams(window.location.search).has('t2');
@@ -56,6 +62,8 @@ createRoot(document.getElementById('root')!).render(
      isWarmStart    ? <WarmStartApp /> :
      isWarmProfile1 ? <WarmProfile1App /> :
      isWarmProfile1Crisp ? <WarmProfile1CrispApp /> :
+     isWarmProfile1Crisper ? <WarmProfile1CrisperApp /> :
+     isWarmProfile2Crisp ? <WarmProfile2CrispApp /> :
      isT2Fashion    ? <T2FashionApp /> :
      isT3           ? <T3App /> :
      isL1Templates  ? <L1TemplatesApp /> :
