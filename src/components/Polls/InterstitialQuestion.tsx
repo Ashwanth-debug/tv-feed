@@ -604,7 +604,7 @@ export default function InterstitialQuestion({
           }}>
             {headlineDone
               ? <HighlightText text={question.question} phrases={hlPhrases} />
-              : <CinematicText text={question.question} playing={headlinePlay} speed={0.038} duration={0.55} onDone={onHeadlineDone} />
+              : <CinematicText text={question.question} playing={headlinePlay} speed={0.072} duration={0.65} onDone={onHeadlineDone} />
             }
           </h2>
         </div>

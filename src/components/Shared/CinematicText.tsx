@@ -93,7 +93,7 @@ export default function CinematicText({
           className="cr-char"
           style={{
             display: 'inline',
-            whiteSpace: ch === ' ' ? 'pre' : 'normal',
+            whiteSpace: ch === ' ' ? 'pre' : undefined,
           }}
         >
           {ch}
